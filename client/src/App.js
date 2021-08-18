@@ -17,6 +17,8 @@ import Footer from './components/Footer.js';
 
 
 
+
+
 function App() {
 
   //I can put as much stuff here as I want
@@ -38,8 +40,12 @@ function App() {
 
     return (
       <div className="App">
+
+
   
   <NavBar pages={pages} setPage={setPage}/>
+
+  
   
   {page}
   

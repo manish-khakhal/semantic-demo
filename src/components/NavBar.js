@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -32,6 +33,32 @@ function NavBar({pages, setPage}) {
      </Navbar.Collapse>
      </Container>
    </Navbar>
+=======
+
+function NavBar({pages, setPage}) {
+  return (
+    <div className="App">
+<div className="Navbar">
+
+     <ul>
+<li onClick={()=>setPage(pages[0])}>Home</li>
+<li onClick={()=>setPage(pages[1])}>My Garage</li>
+<li onClick={()=>setPage(pages[2])}>Garage Sale</li>
+<li onClick={()=>setPage(pages[3])}>Shopping Cart</li>
+<li onClick={()=>setPage(pages[4])}>Log Off</li>
+
+
+
+
+     </ul>
+     
+     </div>
+
+
+
+     
+    </div>
+>>>>>>> parent of ebb636b (Added folders client and server)
 
 
 );

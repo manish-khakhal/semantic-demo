@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
+<<<<<<< HEAD
+import 'bootstrap/dist/css/bootstrap.min.css';
+=======
+>>>>>>> parent of ebb636b (Added folders client and server)
 
 ReactDOM.render(
   <React.StrictMode>

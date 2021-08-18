@@ -39,8 +39,11 @@
 
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> parent of ebb636b (Added folders client and server)
 /* this is the additional styling */
 
 .Navbar{
@@ -81,6 +84,10 @@ h2, h3{
 h1 {
   text-align: left;
   color:teal;
+<<<<<<< HEAD
+  padding:10px;
+=======
+>>>>>>> parent of ebb636b (Added folders client and server)
 }
 
 
@@ -109,10 +116,13 @@ p{
 
 
 
+<<<<<<< HEAD
+=======
 
 
 
 
+>>>>>>> parent of ebb636b (Added folders client and server)
 .footer-color{
   background-color: #BCCB37;
   width:100%;
@@ -137,8 +147,11 @@ background-color: white;
 }
 
 
+<<<<<<< HEAD
+=======
 @media screen and (min-width: 480px) {
   body {
     background-color: lightgreen;
   }
 }
+>>>>>>> parent of ebb636b (Added folders client and server)

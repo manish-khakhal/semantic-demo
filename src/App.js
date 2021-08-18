@@ -17,6 +17,11 @@ import Footer from './components/Footer.js';
 
 
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> parent of ebb636b (Added folders client and server)
 function App() {
 
   //I can put as much stuff here as I want
@@ -38,8 +43,17 @@ function App() {
 
     return (
       <div className="App">
+<<<<<<< HEAD
+
+
   
   <NavBar pages={pages} setPage={setPage}/>
+
+  
+=======
+  
+  <NavBar pages={pages} setPage={setPage}/>
+>>>>>>> parent of ebb636b (Added folders client and server)
   
   {page}
   

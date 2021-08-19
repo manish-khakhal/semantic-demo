@@ -7,8 +7,7 @@ import imagebox from "../imagebox.png";
 function HomePage() {
   return (
     <div className="App">
-      <br></br>
-      <br></br>
+     
       <div>
 
 
@@ -21,14 +20,14 @@ function HomePage() {
         
         <div class="ui fluid container">
           <div class="ui stackable two column grid">
-            <div class="row">
-              <br></br>
+            <div class="row logon">
+           
 
               {/* this is a placeholder row */}
               <div class="one wide column"></div>
 
               <div class="five wide column">
-                <h1>The Garage Sale</h1>
+       <br></br>
 
                 <h2>
                   Buy and sell used items. Creating contientious consumers on a
@@ -88,7 +87,7 @@ function HomePage() {
 
               <div class="eight wide column">
                 {" "}
-                <h1>First Time? Create a New Account!</h1>
+                <h2>First Time? Create a New Account!</h2>
                 <Form size="large">
                 
                     <Form.Input fluid placeholder="First Name" />
@@ -122,28 +121,28 @@ function HomePage() {
                   src={imagenature}
                   style={{ width: "100%" }}
                   alt=""
-                  class="ui fluid image"
+                  class="ui fluid image nature"
                 />
               </div>
               <div class="eight wide column">
                 <br></br>
-                <br></br>
+            
 
                 <h2 class="information">Why buy used? </h2>
 
-                <h3 class="information">
+                <h4 class="information">
                   Consumers believe that being economical is the only reason to
                   purchase used items, but there's a bigger picture. Our group
                   of volunteers is here to remind you that your purchases can
-                  not only help others but contribute maintaining our natural
+                  not only help others but contribute to maintaining our natural
                   global environment.
-                </h3>
+                </h4>
 
-                <h3 class="information">
+                <h4 class="information">
                   Every repurchased desk, saves a tree. Every clothing item is
                   one less area of land that can given back to nature. Do your
                   part. Be a contientious consumer.
-                </h3>
+                </h4>
               </div>
             </div>
           </div>

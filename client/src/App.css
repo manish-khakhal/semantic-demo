@@ -39,6 +39,8 @@
 
 
 
+
+
 /* this is the additional styling */
 
 .Navbar{
@@ -79,7 +81,6 @@ h2, h3{
 h1 {
   text-align: left;
   color:teal;
-  padding:10px;
 }
 
 
@@ -108,6 +109,10 @@ p{
 
 
 
+
+
+
+
 .footer-color{
   background-color: #BCCB37;
   width:100%;
@@ -132,3 +137,8 @@ background-color: white;
 }
 
 
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}

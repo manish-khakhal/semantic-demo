@@ -38,7 +38,7 @@ function HomePage(props) {
     const mutationResponse = await ADD_USER({
       variables: {
         email: formState.email, password: formState.password,
-        firstName: formState.forstName, phoneNum: formState.phoneNum, lastName: formState.lastName
+        firstName: formState.firstName, phoneNum: formState.phoneNum, lastName: formState.lastName
       }
     });
     const token = mutationResponse.data.addUser.token;
@@ -52,7 +52,7 @@ function HomePage(props) {
       [name]: value
     });
   };
-  
+
   return (
     <div className="App">
       <br></br>

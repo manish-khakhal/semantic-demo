@@ -1,10 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Message, Segment } from "semantic-ui-react";
 import imagelogon from "../imagelogon.png";
 import imagenature from "../imagenature.png";
 import imagebox from "../imagebox.png";
 
-function HomePage() {
+import {useMutation} from '@apollo/react-hooks';
+//import { Link } from "react-router-dom";
+import {LOGIN} from "../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+
+/*function Login(props) {
+  const[formState, setFormState] = useState({email: '', password: ''})
+  const[login, {error}] = useMutation(LOGIN);
+
+  const handleForm
+}*/
+
+function HomePage(props) {
+  const[formState, setFormState] = useState({email: '', password: ''})
+  const[login, {error}] = useMutation(LOGIN);
+
+  const lHandleFormSubmit = async event => {
+    event.preventDefault();
+    try{
+      const mutationResponse = await login({ variables: {email: formState.email, password: formState.password } })
+      const token = mutationResponse.dat.login.token;
+      Auth.login(token);
+    }
+    catch(err) {
+      console.log(err);
+    }
+  };
+
+  const aHandleFormSubmit = async event => {
+    event.preventDefault();
+    const mutationResponse = await ADD_USER({
+      variables: {
+        email: formState.email, password: formState.password,
+        firstName: formState.forstName, phoneNum: formState.phoneNum, lastName: formState.lastName
+      }
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
+
+  const handleChange = event => {
+    const {name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value
+    });
+  };
+  
   return (
     <div className="App">
       <br></br>
@@ -37,13 +85,14 @@ function HomePage() {
 
                 {/* this is the established user emaail log in and password */}
 
-                <Form size="large">
+                <Form size="large" onSubmit ={lHandleFormSubmit}>
                   <Segment stacked>
                     <Form.Input
                       fluid
                       icon="mail"
                       iconPosition="left"
                       placeholder="E-mail address"
+                      onChange = {handleChange}
                     />
                     <Form.Input
                       fluid
@@ -51,6 +100,7 @@ function HomePage() {
                       iconPosition="left"
                       placeholder="Password"
                       type="password"
+                      onChange = {handleChange}
                     />
 
                     <Button color="teal" fluid size="large">
@@ -89,13 +139,13 @@ function HomePage() {
               <div class="eight wide column">
                 {" "}
                 <h1>First Time? Create a New Account!</h1>
-                <Form size="large">
+                <Form size="large" onSubmit={aHandleFormSubmit}>
                 
-                    <Form.Input fluid placeholder="First Name" />
-                    <Form.Input fluid placeholder="Last Name" />
+                    <Form.Input fluid placeholder="First Name" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="Last Name" onChange={handleChange}/>
 
-                    <Form.Input fluid placeholder="Phone" />
-                    <Form.Input fluid placeholder="Email" />
+                    <Form.Input fluid placeholder="Phone" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="Email" onChange={handleChange}/>
 
                     <Form.Input
                       fluid
@@ -103,6 +153,7 @@ function HomePage() {
                       iconPosition="left"
                       placeholder="Create Password"
                       type="password"
+                      onChange={handleChange}
                     />
 
                     <Button color="olive" fluid size="large">

@@ -20,12 +20,13 @@ import Auth from "../utils/auth";
 function HomePage(props) {
   const[formState, setFormState] = useState({email: '', password: ''})
   const[login, {error}] = useMutation(LOGIN);
+  const [addUser] = useMutation(ADD_USER);
 
   const lHandleFormSubmit = async event => {
     event.preventDefault();
     try{
       const mutationResponse = await login({ variables: {email: formState.email, password: formState.password } })
-      const token = mutationResponse.dat.login.token;
+      const token = mutationResponse.data.login.token;
       Auth.login(token);
     }
     catch(err) {
@@ -35,7 +36,7 @@ function HomePage(props) {
 
   const aHandleFormSubmit = async event => {
     event.preventDefault();
-    const mutationResponse = await ADD_USER({
+    const mutationResponse = await addUser({
       variables: {
         email: formState.email, password: formState.password,
         firstName: formState.firstName, phoneNum: formState.phoneNum, lastName: formState.lastName

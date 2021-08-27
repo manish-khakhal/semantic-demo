@@ -5,7 +5,7 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
-        categories: async () => {
+        garages: async () => {
             return await Garage.find();
         },
         products: async (parent, { garage, name }) => {

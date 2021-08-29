@@ -38,8 +38,13 @@ function HomePage(props) {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
-        email: formState.email, password: formState.password,
-        firstName: formState.firstName, phoneNum: formState.phoneNum, lastName: formState.lastName
+        firstName: formState.firstName,
+        lastName: formState.lastName,
+        phoneNum: formState.phoneNum, 
+        email: formState.email, 
+        password: formState.password
+        
+        
       }
     });
     const token = mutationResponse.data.addUser.token;

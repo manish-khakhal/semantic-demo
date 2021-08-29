@@ -1,5 +1,5 @@
-import gql from 'graphql-tag';
-
+//import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -31,8 +31,21 @@ export const ADD_ORDER = gql`
 
 
 export const ADD_USER = gql`
-  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $phoneNum: String!) {
-    addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, phoneNum: $phoneNum) {
+  mutation addUser(
+    $firstName: String! 
+    $lastName: String! 
+    $email: String! 
+    $password: String! 
+    $phoneNum: String!
+  ) {
+    addUser(
+      firstName: $firstName 
+      lastName: $lastName 
+      email: $email
+      password: $password
+      phoneNum: $phoneNum
+      orders: []
+    ) {
       token
       user {
         _id

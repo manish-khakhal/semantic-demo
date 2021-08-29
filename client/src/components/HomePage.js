@@ -23,6 +23,7 @@ function HomePage(props) {
   const [addUser] = useMutation(ADD_USER);
 
   const lHandleFormSubmit = async event => {
+    debugger
     event.preventDefault();
     try{
       const mutationResponse = await login({ variables: {email: formState.email, password: formState.password } })

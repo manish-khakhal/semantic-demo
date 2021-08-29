@@ -1,5 +1,5 @@
-const {Schema} = require('mongoose');
-const orderSchema = require('./Order');
+const {Schema, Model, model} = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
     /*userId: {
@@ -28,8 +28,27 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    orders: [orderSchema],
+    orders: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Order"
+        }
+    ],
 
 });
+userSchema.pre('save', async function(next) {
+    if (this.isNew || this.isModified('password')) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+  
+    next();
+  });
+  
+userSchema.methods.isCorrectPassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
+  };
 
-module.exports = userSchema;
+  
+const user = model("User", userSchema);
+module.exports = user;

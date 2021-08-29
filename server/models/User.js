@@ -1,5 +1,5 @@
-const {Schema} = require('mongoose');
-const orderSchema = require('./Order');
+const {Schema, Model, model} = require('mongoose');
+//const orderSchema = require('./Order');
 
 const userSchema = new Schema({
     /*userId: {
@@ -28,8 +28,13 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    orders: [orderSchema],
+    orders: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Order"
+        }
+    ],
 
 });
-
-module.exports = userSchema;
+const user = model("User", userSchema);
+module.exports = user;

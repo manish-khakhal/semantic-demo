@@ -1,5 +1,4 @@
-const {Schema} = require('mongoose');
-const productSchema = require('./Product');
+const {Schema, model} = require('mongoose');
 
 const garageSchema = new Schema({
     /*gargId: {
@@ -11,7 +10,12 @@ const garageSchema = new Schema({
         type: String,
         required: true,
     },
-    productList: [productSchema],
+    productList: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Product"
+            }
+    ],
 });
-
-module.exports = garageSchema;
+const garage = model("Garage", garageSchema);
+module.exports = garage;

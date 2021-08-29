@@ -98,6 +98,7 @@ function HomePage(props) {
                       icon="mail"
                       iconPosition="left"
                       placeholder="E-mail address"
+                      name = "email"
                       onChange = {handleChange}
                     />
                     <Form.Input
@@ -106,6 +107,7 @@ function HomePage(props) {
                       iconPosition="left"
                       placeholder="Password"
                       type="password"
+                      name= "password"
                       onChange = {handleChange}
                     />
 
@@ -147,11 +149,11 @@ function HomePage(props) {
                 <h1>First Time? Create a New Account!</h1>
                 <Form size="large" onSubmit={aHandleFormSubmit}>
                 
-                    <Form.Input fluid placeholder="First Name" onChange={handleChange}/>
-                    <Form.Input fluid placeholder="Last Name" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="First Name" name ="firstName" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="Last Name" name = "lastName" onChange={handleChange}/>
 
-                    <Form.Input fluid placeholder="Phone" onChange={handleChange}/>
-                    <Form.Input fluid placeholder="Email" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="Phone" name = "phoneNum" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="Email" name = "email" onChange={handleChange}/>
 
                     <Form.Input
                       fluid
@@ -159,6 +161,7 @@ function HomePage(props) {
                       iconPosition="left"
                       placeholder="Create Password"
                       type="password"
+                      name = "password"
                       onChange={handleChange}
                     />
 

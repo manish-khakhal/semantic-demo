@@ -36,10 +36,11 @@ Adobe XD
 
 ### Git Hub Repository
 
+https://github.com/Twagner0324/semantic-demo
 
 ### Deployed URL
 
-
+https://the-garage-sale.herokuapp.com/
 
 ### Adobe XD
 https://xd.adobe.com/view/a8ae67fd-28e5-42c2-a597-b15a9a3315fb-fdfd/

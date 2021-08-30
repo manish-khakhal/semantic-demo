@@ -25,7 +25,7 @@ function ShoppingCart() {
 
 
     getCheckout({
-      variables: { products: productIds }
+      //variables: { products: productIds }
     });
   }
 

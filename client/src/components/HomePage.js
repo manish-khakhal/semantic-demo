@@ -1,10 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Message, Segment } from "semantic-ui-react";
 import imagelogon from "../imagelogon.png";
 import imagenature from "../imagenature.png";
 import imagebox from "../imagebox.png";
 
-function HomePage() {
+import {useMutation} from '@apollo/react-hooks';
+//import { Link } from "react-router-dom";
+import {LOGIN} from "../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+
+/*function Login(props) {
+  const[formState, setFormState] = useState({email: '', password: ''})
+  const[login, {error}] = useMutation(LOGIN);
+  const handleForm
+}*/
+
+function HomePage(props) {
+  const[formState, setFormState] = useState({email: '', password: ''})
+  const[login, {error}] = useMutation(LOGIN);
+  const [addUser] = useMutation(ADD_USER);
+
+  const lHandleFormSubmit = async event => {
+    debugger
+    event.preventDefault();
+    try{
+      const mutationResponse = await login({ variables: {email: formState.email, password: formState.password } })
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    }
+    catch(err) {
+      console.log(err);
+    }
+  };
+
+  const aHandleFormSubmit = async event => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        firstName: formState.firstName,
+        lastName: formState.lastName,
+        phoneNum: formState.phoneNum, 
+        email: formState.email, 
+        password: formState.password
+        
+        
+      }
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
+
+  const handleChange = event => {
+    const {name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value
+    });
+  };
+
   return (
     <div className="App">
       <br></br>
@@ -37,13 +91,15 @@ function HomePage() {
 
                 {/* this is the established user emaail log in and password */}
 
-                <Form size="large">
+                <Form size="large" onSubmit ={lHandleFormSubmit}>
                   <Segment stacked>
                     <Form.Input
                       fluid
                       icon="mail"
                       iconPosition="left"
                       placeholder="E-mail address"
+                      name = "email"
+                      onChange = {handleChange}
                     />
                     <Form.Input
                       fluid
@@ -51,6 +107,8 @@ function HomePage() {
                       iconPosition="left"
                       placeholder="Password"
                       type="password"
+                      name= "password"
+                      onChange = {handleChange}
                     />
 
                     <Button color="teal" fluid size="large">
@@ -89,13 +147,13 @@ function HomePage() {
               <div class="eight wide column">
                 {" "}
                 <h1>First Time? Create a New Account!</h1>
-                <Form size="large">
+                <Form size="large" onSubmit={aHandleFormSubmit}>
                 
-                    <Form.Input fluid placeholder="First Name" />
-                    <Form.Input fluid placeholder="Last Name" />
+                    <Form.Input fluid placeholder="First Name" name ="firstName" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="Last Name" name = "lastName" onChange={handleChange}/>
 
-                    <Form.Input fluid placeholder="Phone" />
-                    <Form.Input fluid placeholder="Email" />
+                    <Form.Input fluid placeholder="Phone" name = "phoneNum" onChange={handleChange}/>
+                    <Form.Input fluid placeholder="Email" name = "email" onChange={handleChange}/>
 
                     <Form.Input
                       fluid
@@ -103,6 +161,8 @@ function HomePage() {
                       iconPosition="left"
                       placeholder="Create Password"
                       type="password"
+                      name = "password"
+                      onChange={handleChange}
                     />
 
                     <Button color="olive" fluid size="large">
